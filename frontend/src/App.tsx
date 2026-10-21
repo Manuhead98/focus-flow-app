@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Timer } from './features/timer/Timer';
 import { TaskList } from './features/tasks/TaskList';
+import { NoteList } from './features/notes/NoteList';
 
 export default function App() {
   const [tareaSeleccionadaId, setTareaSeleccionadaId] = useState<string | null>(null);
@@ -21,21 +22,24 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto p-4">
+      <main className="max-w-6xl mx-auto p-4">
         <h1 className="text-2xl font-bold mb-6">Bienvenido a Focus Flow</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 space-y-6">
             <Timer tareaId={tareaSeleccionadaId} />
-          </div>
-
-          <div className="lg:col-span-4 space-y-4">
             <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
               <h2 className="text-sm font-semibold text-slate-900 mb-3 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-indigo-600" />
                 Tareas
               </h2>
               <TaskList onTareaSeleccionada={setTareaSeleccionadaId} />
+            </section>
+          </div>
+
+          <div className="lg:col-span-4 space-y-4">
+            <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+              <NoteList />
             </section>
           </div>
         </div>
